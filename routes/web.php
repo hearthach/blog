@@ -17,29 +17,37 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class);
 
-Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
+    // Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
 
-Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+    // Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
 
-Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
+    // Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
 
-Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');
+    // Route::get('cursos/{curso}', [CursoController::class, 'show'])->name('cursos.show');
 
-Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+    // Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
 
-//SE UTILIZO EL METODO PUT PARA ACTUALIZAR
-Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
+    // //SE UTILIZO EL METODO PUT PARA ACTUALIZAR
+    // Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
 
-//METODO DELETE PARA ELIMINAR
-Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
-//laravel recomienda utilizar metodo PUT para actualizar y no POST
+    // //METODO DELETE PARA ELIMINAR
+    // Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+    //laravel recomienda utilizar metodo PUT para actualizar y no POST
 
-// Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
-//     if ($categoria) {
-//         return "Bienvenido al curso $curso, de la categoria $categoria";
-//     } else {
-//         return "Bienvenido al curso: $curso";
-//     }
-// });
+    // Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
+    //     if ($categoria) {
+    //         return "Bienvenido al curso $curso, de la categoria $categoria";
+    //     } else {
+    //         return "Bienvenido al curso: $curso";
+    //     }
+    // });
+
+/**  TODAS LAS RUTAS EN UNA SOLA LINEA DE CODIGO Y CAMBIANDO EL NOMBRE **/
+// Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');
+
+/** METODO DE TODOS LOS ROUTES EN UNA SOLA LINEA**/
+Route::resource('cursos', CursoController::class);
+
+
 
 
