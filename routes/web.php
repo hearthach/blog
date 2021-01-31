@@ -15,7 +15,7 @@ use App\Http\Controllers\CursoController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home'); //SE LE AGREGO UN NOMBRE A LA RUTAS HOME
 
     // Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
 
@@ -47,6 +47,9 @@ Route::get('/', HomeController::class);
 
 /** METODO DE TODOS LOS ROUTES EN UNA SOLA LINEA**/
 Route::resource('cursos', CursoController::class);
+
+/** PARA NUEVO LINK NOSOTROS - NUEVO METODO "VIEW" - SOLO PARA CONTENIDO ESTATICO NO BASE DATOS, SOLO VISTA**/
+Route::view('nosotros', 'nosotros')->name('nosotros');
 
 
 
