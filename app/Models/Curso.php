@@ -17,4 +17,10 @@ class Curso extends Model
     //guarded -> permite los campos protegidos e ignora los campos permitidos
     //si en la BD no hay campo protejido, declaramos la proiedad guarded como array VACIO
     protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        // return $this->getKeyName(); //RN LUGAR DE MODIFIAR EL MODELO, QUE ES MALA PRACTICA, SE AGREGA ESTE CODIGO EN MODELS CURSO.PHP
+        return 'slug';
+    }
 }

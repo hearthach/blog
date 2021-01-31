@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Curso;
 use Illuminate\Database\Eloquent\Factories\Factory;
-//use Illuminate\Support\Str;
+use Illuminate\Support\Str;
 
 class CursoFactory extends Factory
 {
@@ -22,8 +22,11 @@ class CursoFactory extends Factory
      */
     public function definition()
     {
+        /** PARA CAMBIAR EL NOMBRE DE URL - METODO 1 **/
+        $name = $this->faker->sentence();
         return [
-            'name'  =>   $this->faker->sentence(),
+            'name'  =>  $name,
+            'slug'  =>  Str::slug($name, '-'), //Slug espera recinbid dos parametros trannformando en Hola-mundo
             'descripcion'   =>  $this->faker->paragraph(),
             'categoria' =>  $this->faker->randomElement(['Desarrollo Web', 'Diseño Web'])
         ];
