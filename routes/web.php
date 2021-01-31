@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursoController;
-use App\Mail\ContactanosMailable;
-use Illuminate\Support\Facades\Mail;
+// use App\Mail\ContactanosMailable; PASAN AL CONTROLADOR ContactanosController
+// use Illuminate\Support\Facades\Mail; PASAN AL CONTROLADOR ContactanosController
 
 /*
 |--------------------------------------------------------------------------
@@ -53,15 +54,7 @@ Route::resource('cursos', CursoController::class);
 /** PARA NUEVO LINK NOSOTROS - NUEVO METODO "VIEW" - SOLO PARA CONTENIDO ESTATICO NO BASE DATOS, SOLO VISTA**/
 Route::view('nosotros', 'nosotros')->name('nosotros');
 
-/**  RUTA PARA MIS CORREOS ELECTRONICOS **/
-Route::get('contactanos', function(){
-    $correo = new ContactanosMailable;
+/**  RUTA PARA MIS CORREOS ELECTRONICOS - METODO GET Y POST**/
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 
-    //DEFINIR EL CORREO A QUIENN VOY A MANDAR
-    Mail::to('mplandauro@gmail.com')->send($correo);
-    return "Mensaje enviado";
-});
-
-
-
-
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
